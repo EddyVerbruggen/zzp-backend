@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+GET		  /user/create                          UserController.create
+GET		  /user/load/{uuid}                     UserController.load
+
+GET		  /linkedin/authorised/{uuid}           LinkedIn.authorised
+GET		  /linkedin/auth/{uuid}                 LinkedIn.auth
+GET		  /linkedin/authenticated/              LinkedIn.authenticated
+GET		  /linkedin/profile/{uuid}              LinkedIn.profile
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
