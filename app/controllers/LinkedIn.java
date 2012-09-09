@@ -7,6 +7,7 @@ import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.LinkedInApi;
 import org.scribe.model.*;
 import org.scribe.oauth.OAuthService;
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.Http;
 
@@ -115,13 +116,15 @@ public class LinkedIn extends Controller {
   }
 
   private static OAuthService getService() {
-        // 1) build the service
+    final String port = Play.runingInTestMode() ? "9006" : "9005";
+
+    // build the service
     return new ServiceBuilder()
         .provider(LinkedInApi.class)
         .apiKey(consumerKey)
         .apiSecret(consumerKeySecret)
         .scope("r_network,r_emailaddress")
-        .callback("http://www.thumbrater.com:9005/linkedin/authenticated")
+        .callback("http://www.thumbrater.com:"+port+"/linkedin/authenticated")
 //        .debug()
         .build();
   }
