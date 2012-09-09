@@ -116,7 +116,7 @@ public class LinkedIn extends Controller {
   }
 
   private static OAuthService getService() {
-    final String port = Play.runingInTestMode() ? "9006" : "9005";
+    final String port = Play.mode.isProd() ? "9006" : "9005";
 
     // build the service
     return new ServiceBuilder()
