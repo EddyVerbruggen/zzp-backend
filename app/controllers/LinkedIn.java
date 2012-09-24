@@ -64,12 +64,6 @@ public class LinkedIn extends Controller {
     Http.Response.current().setHeader("Access-Control-Allow-Origin", "*");
     System.err.println("finding user for uuid " + uuid);
 
-    List<User> users = User.findAll();
-    System.err.println("Found " + users.size() + " users");
-    for (User usr : users) {
-      System.err.println(usr);
-    }
-
     final User user = User.findByUUID(uuid);
     renderJSON(user != null && user.linkedInAccessToken != null);
   }
