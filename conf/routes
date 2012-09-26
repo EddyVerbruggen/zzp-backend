@@ -19,5 +19,7 @@ GET		  /linkedin/auth/{uuid}                 LinkedIn.auth
 GET		  /linkedin/authenticated/              LinkedIn.authenticated
 GET		  /linkedin/profile/{uuid}              LinkedIn.profile
 
+GET     /network/updates                      NetworkController.updates
+
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
