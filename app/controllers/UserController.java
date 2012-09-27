@@ -11,7 +11,7 @@ public class UserController extends Controller {
 
   public static void create() {
     System.err.println("creating a user");
-    final User user = new User("anonymous", new Date(), Codec.UUID()).save();
+    final User user = new User("anonymous", new Date(), "img/pasfoto/4.jpg", Codec.UUID()).save();
     // allow cross domain ajax requests (TODO: as @After interceptor)
     Http.Response.current().setHeader("Access-Control-Allow-Origin", "*");
     renderJSON(user);
